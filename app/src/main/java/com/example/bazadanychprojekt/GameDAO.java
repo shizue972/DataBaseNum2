@@ -22,5 +22,5 @@ public interface GameDAO {
     public List<Game> SelectAllGames();
 
     @Query("Select GameName FROM games WHERE isMultiplayer = true")
-    public List<String> returnAllGamesOlderThan()
+    public List<String>it0returnAllGamesOlderThan(int GameAge);
 }

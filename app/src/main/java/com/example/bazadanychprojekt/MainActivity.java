@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.room.Room;
 
 public class MainActivity extends AppCompatActivity {
+    private GameDB gameDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +22,14 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        gameDB = Room.databaseBuilder(
+                getApplicationContext(),
+                GameDB.class,
+                "games_db"
+        ).allowMainThreadQueries().build();
+        gameDB.returnGameDAO().InsertInDB(
+                new Game("COD", 50, true, 25)
+        );
+
     }
 }

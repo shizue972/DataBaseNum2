@@ -14,8 +14,7 @@ public class Game {
     //true multiplayer
     //false singleplayer
     public int GameAge;
-    public Game(int id, String gameName, int price, boolean isMultiplayer, int gameAge) {
-        this.id = id;
+    public Game(String gameName, int price, boolean isMultiplayer, int gameAge) {
         GameName = gameName;
         Price = price;
         this.isMultiplayer = isMultiplayer;
