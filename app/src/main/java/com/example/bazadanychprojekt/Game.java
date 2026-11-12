@@ -14,17 +14,19 @@ public class Game {
     //true multiplayer
     //false singleplayer
     public int GameAge;
-    public Game(String gameName, int price, boolean isMultiplayer, int gameAge) {
+    public String Genre;
+    public Game(String gameName, int price, boolean isMultiplayer, int gameAge, String genre) {
         GameName = gameName;
         Price = price;
         this.isMultiplayer = isMultiplayer;
         GameAge = gameAge;
+        Genre = genre;
     }
     public Game(){
 
     }
     @Override
     public String toString(){
-        return  "Name:" + GameName + "price: " + Price + "Is multiplayer?" + isMultiplayer + "\n";
+        return  "Name:" + GameName + "price: " + Price + "Is multiplayer?" + isMultiplayer + "Gatunek" + Genre + "\n";
     }
 }

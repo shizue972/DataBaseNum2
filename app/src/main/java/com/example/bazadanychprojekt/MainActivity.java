@@ -21,7 +21,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private GameDB gameDB;
     private Button button;
-    private EditText editTextName, editTextAge;
+    private EditText editTextName, editTextAge, editTextPrice;
     private Spinner spinner;
     private CheckBox checkBox;
     private ListView listView;
@@ -44,21 +44,23 @@ public class MainActivity extends AppCompatActivity {
         spinner = findViewById(R.id.spinner);
         checkBox = findViewById(R.id.checkBoxMulti);
         button = findViewById(R.id.button);
+        editTextPrice = findViewById(R.id.editTextPrice);
         gameDB = Room.databaseBuilder(
                 getApplicationContext(),
                 GameDB.class,
                 "games_db"
         ).allowMainThreadQueries().build();
         gameDB.returnGameDAO().InsertInDB(
-                new Game("COD", 50, true, 25)
+                new Game("COD", 50, true, 25, "fps")
         );
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Game game = new Game(
-                editTextName.getText().toString(),
-                        Integer.parseInt(editTextAge.getText().toString()),
+                        editTextName.getText().toString(),
+                        Integer.parseInt(editTextPrice.getText().toString()),
                         checkBox.isChecked(),
+                        Integer.parseInt(editTextAge.getText().toString()),
                         spinner.getSelectedItem().toString()
                 );
                 gameDB.returnGameDAO().InsertInDB(game);
