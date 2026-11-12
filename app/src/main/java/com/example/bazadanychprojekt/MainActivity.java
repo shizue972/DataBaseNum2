@@ -56,9 +56,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Game game = new Game(
-
+                editTextName.getText().toString(),
+                        Integer.parseInt(editTextAge.getText().toString()),
+                        checkBox.isChecked(),
+                        spinner.getSelectedItem().toString()
                 );
+                gameDB.returnGameDAO().InsertInDB(game);
+                games.add(game);
+                arrayAdapter.notifyDataSetChanged();
             }
         });
+        listView = findViewById(R.id.listView);
+        games = gameDB.returnGameDAO().SelectAllGames();
+        arrayAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, games);
+        listView.setAdapter(arrayAdapter);
     }
 }
